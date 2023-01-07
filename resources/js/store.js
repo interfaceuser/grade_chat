@@ -10,7 +10,6 @@ import {
 } from './api'
 import Swal from 'sweetalert2'
 import router from './router'
-import eventBus from "./eventBus"
 
 const max_message_list_size = 10;
 

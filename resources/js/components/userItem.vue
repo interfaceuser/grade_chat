@@ -1,23 +1,22 @@
 <template>
-    <li class="person" data-chat="person1">
+    <li class="person" :data-chat="id">
         <div class="user">
-            <img src="https://www.bootdey.com/img/Content/avatar/avatar3.png" alt="Retail Admin">
-            <span class="status busy"></span>
+            <img :src="avatar" :alt="id+name">
+            <span class="status"></span>
         </div>
         <p class="name-time">
-            <span class="name">Steve Bangalter</span>
-            <span class="time">15/02/2019</span>
+            <span class="name">{{ name }}</span>
+            <span class="time">{{ last_activity }}</span>
         </p>
     </li>
 </template>
 <script>
-/*
-доступные статусы
-busy
-offline
-away
- */
 export default {
-
+    props: {
+        id: '',
+        avatar: '',
+        name: '',
+        last_activity: '',
+    }
 }
 </script>

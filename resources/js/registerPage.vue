@@ -8,25 +8,25 @@
                         <form>
                             <!-- Email input -->
                             <div class="form-outline mb-4">
-                                <input type="email" id="email" class="form-control" />
-                                <label class="form-label" for="email">Email address</label>
+                                <input type="email" id="email" class="form-control" v-model="email"/>
+                                <label class="form-label" for="email">Email</label>
                             </div>
 
                             <!-- Password input -->
                             <div class="form-outline mb-4">
-                                <input type="password" id="passwd" class="form-control" />
-                                <label class="form-label" for="passwd">Password</label>
+                                <input type="password" id="passwd" class="form-control" v-model="password"/>
+                                <label class="form-label" for="passwd">Пароль</label>
                             </div>
 
                             <div class="form-outline mb-4">
-                                <input type="password" id="passwdConfirm" class="form-control" />
-                                <label class="form-label" for="passwdConfirm">Password confirm</label>
+                                <input type="password" id="passwdConfirm" class="form-control" v-model="password_confirmation"/>
+                                <label class="form-label" for="passwdConfirm">Подтверждение пароля</label>
                             </div>
 
 
                             <!-- Submit button -->
-                            <button type="button" class="btn btn-primary btn-block mb-4">Register</button>
-
+                            <button type="button" class="btn btn-primary btn-block" @click.prevent="registerUserSend({email, password, password_confirmation})">Регистрация</button>
+                            <router-link to="/login" class="btn btn-primary btn-block ml-4">К логину</router-link>
                         </form>
 
                     </div>
@@ -37,7 +37,21 @@
 </template>
 
 <script>
+import {mapActions} from "vuex";
 export default {
+    data: function(){
+        return {
+            email: '',
+            password: '',
+            password_confirmation: '',
+        }
+    },
+    methods: {
+        ...mapActions(['registerUser']),
+        registerUserSend: async function(data){
+            await this.registerUser(data)
+        }
+    },
 
 }
 </script>

@@ -390,3 +390,7 @@ ul {
         border-bottom-left-radius: 0.5rem;
     }
 }
+
+.personal-message {
+    font-weight: bold;
+}

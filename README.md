@@ -4,13 +4,13 @@
 
 скопировать файл .env.example в .env и вписать настройки(в частности имя базы данных, логин и пароль к ней)
 
+composer install
+
 php artisan migrate
 
 php artisan key:generate
 
 php artisan jwt:secret
-
-composer install
 
 npm install
 

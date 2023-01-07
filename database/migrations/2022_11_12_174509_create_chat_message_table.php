@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('chat_message', function (Blueprint $table) {
+        Schema::create('chat_messages', function (Blueprint $table) {
             $table->id();
+            $table->text('text')->nullable();
+            $table->bigInteger('from_user_id')->unsigned();
+            $table->bigInteger('to_user_id')->nullable()->unsigned();
+            $table->foreign('from_user_id')->references('id')->on('users');
+            $table->foreign('to_user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
